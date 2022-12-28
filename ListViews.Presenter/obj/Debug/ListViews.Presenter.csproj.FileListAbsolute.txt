@@ -1,0 +1,13 @@
+C:\Users\User\Desktop\Create with Code\ListViews\ListViews.Presenter\bin\Debug\ListViews.Presenter.exe
+C:\Users\User\Desktop\Create with Code\ListViews\ListViews.Presenter\bin\Debug\ListViews.Presenter.pdb
+C:\Users\User\Desktop\Create with Code\ListViews\ListViews.Presenter\bin\Debug\ListViews.Model.dll
+C:\Users\User\Desktop\Create with Code\ListViews\ListViews.Presenter\bin\Debug\ListViews.Model.pdb
+C:\Users\User\Desktop\Create with Code\ListViews\ListViews.Presenter\obj\Debug\ListViews.Presenter.csproj.AssemblyReference.cache
+C:\Users\User\Desktop\Create with Code\ListViews\ListViews.Presenter\obj\Debug\ListViews.Presenter.csproj.CoreCompileInputs.cache
+C:\Users\User\Desktop\Create with Code\ListViews\ListViews.Presenter\obj\Debug\ListViews.Presenter.csproj.CopyComplete
+C:\Users\User\Desktop\Create with Code\ListViews\ListViews.Presenter\obj\Debug\ListViews.Presenter.exe
+C:\Users\User\Desktop\Create with Code\ListViews\ListViews.Presenter\obj\Debug\ListViews.Presenter.pdb
+C:\Users\User\Desktop\Create with Code\ListViews\ListViews.Presenter\bin\Debug\ListViews.View.dll
+C:\Users\User\Desktop\Create with Code\ListViews\ListViews.Presenter\bin\Debug\ListViews.View.pdb
+C:\Users\User\Desktop\Create with Code\ListViews\ListViews.Presenter\bin\Debug\ListViews.View.dll.config
+C:\Users\User\Desktop\Create with Code\ListViews\ListViews.Presenter\obj\Debug\ListViews.Presenter.csproj.SuggestedBindingRedirects.cache

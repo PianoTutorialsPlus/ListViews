@@ -1,0 +1,11 @@
+C:\Users\User\Desktop\Create with Code\ListViews\ListViews.View\obj\Debug\ListViews.View.csproj.AssemblyReference.cache
+C:\Users\User\Desktop\Create with Code\ListViews\ListViews.View\obj\Debug\ListViews.View.csproj.GenerateResource.cache
+C:\Users\User\Desktop\Create with Code\ListViews\ListViews.View\obj\Debug\ListViews.View.csproj.CoreCompileInputs.cache
+C:\Users\User\Desktop\Create with Code\ListViews\ListViews.View\bin\Debug\ListViews.View.dll.config
+C:\Users\User\Desktop\Create with Code\ListViews\ListViews.View\bin\Debug\ListViews.View.dll
+C:\Users\User\Desktop\Create with Code\ListViews\ListViews.View\bin\Debug\ListViews.View.pdb
+C:\Users\User\Desktop\Create with Code\ListViews\ListViews.View\obj\Debug\ListViews.View.FormListScreen.resources
+C:\Users\User\Desktop\Create with Code\ListViews\ListViews.View\obj\Debug\ListViews.FormMainScreen.resources
+C:\Users\User\Desktop\Create with Code\ListViews\ListViews.View\obj\Debug\ListViews.View.Properties.Resources.resources
+C:\Users\User\Desktop\Create with Code\ListViews\ListViews.View\obj\Debug\ListViews.View.dll
+C:\Users\User\Desktop\Create with Code\ListViews\ListViews.View\obj\Debug\ListViews.View.pdb
