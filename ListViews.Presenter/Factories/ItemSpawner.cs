@@ -11,7 +11,7 @@ namespace ListViews.Presenter.Factories
     {
         public List<IItem> Spawn(List<IItem> itemList)
         {
-            itemList.Add(new Item() as IItem);
+            itemList.Add(new Item(){ Name = "item " + (itemList.Count + 1) });
 
             return itemList;
         }

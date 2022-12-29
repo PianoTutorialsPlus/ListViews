@@ -25,7 +25,9 @@ namespace ListViews.Presenter.UI
 
         private void ConnectEvents()
         {
-            _listScreenView.OnAddItem += _listScreenModel.AddItem;
+            _listScreenView.OnAddedItem += _listScreenModel.AddItem;
+            _listScreenView.OnDeletedItem += _listScreenModel.DeleteItem;
+            _listScreenModel.OnRefreshedItemList += _listScreenView.RefreshItemList;
         }
     }
 }

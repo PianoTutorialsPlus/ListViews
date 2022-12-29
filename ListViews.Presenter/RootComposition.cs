@@ -1,4 +1,5 @@
-﻿using ListViews.Model.UI;
+﻿using ListViews.Model.Contracts;
+using ListViews.Model.UI;
 using ListViews.Presenter.Factories;
 using ListViews.Presenter.UI;
 using ListViews.View;
@@ -33,7 +34,11 @@ namespace ListViews.Presenter
         private void SetupSettings()
         {
             _settings = new Settings();
-            _settings.ItemList = new List<Item>();
+            _settings.ItemList = new List<IItem>();
+            _settings.ItemCollectionList = new List<List<IItem>>
+            {
+                _settings.ItemList
+            };
         }
         private void SetupSpawner()
         {
@@ -43,7 +48,7 @@ namespace ListViews.Presenter
         private void SetupListScreen()
         {
             FormListScreen listScreenView = new FormListScreen();
-            ListScreenModel listScreenModel = new ListScreenModel(_itemSpawner);
+            ListScreenModel listScreenModel = new ListScreenModel(_itemSpawner, _settings.ItemCollectionList);
             _listScreenPresenter = new ListScreenFacade(listScreenModel, listScreenView);
 
             Application.Run(listScreenView);
@@ -52,7 +57,8 @@ namespace ListViews.Presenter
         [Serializable]
         public class Settings
         {
-            public List<Item> ItemList { get; internal set; }
+            public List<IItem> ItemList { get; internal set; }
+            public List<List<IItem>> ItemCollectionList { get; internal set; }
         }
     }
 }

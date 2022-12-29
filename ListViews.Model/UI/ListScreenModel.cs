@@ -11,18 +11,42 @@ namespace ListViews.Model.UI
     {
         private IItemSpawner _itemSpawner;
         private List<IItem> _itemList;
+        private List<List<IItem>> _itemCollectionList; 
 
-        public ListScreenModel(IItemSpawner itemSpawner)
+        public event Action<List<object>> OnRefreshedItemList;
+
+        public ListScreenModel(
+            IItemSpawner itemSpawner, 
+            List<List<IItem>> itemCollectionList)
         {
             _itemSpawner = itemSpawner;
-
-
-            _itemList = new List<IItem>();
+            _itemCollectionList = itemCollectionList;
+            _itemList = itemCollectionList[0];
         }
 
         public void AddItem()
         {
-            _itemSpawner.Spawn(_itemList);
+            _itemList = _itemSpawner.Spawn(_itemList);
+
+            AddItemNamesFromList();
+        }
+
+        public void DeleteItem(int itemIndex)
+        {
+            _itemList.RemoveAt(itemIndex);
+            AddItemNamesFromList();
+        }
+
+        private void AddItemNamesFromList()
+        {
+            List<object> itemNames = new List<object>();
+            
+            foreach (IItem itemName in _itemList)
+            {
+                itemNames.Add(itemName.Name);
+            }
+
+            OnRefreshedItemList?.Invoke(itemNames);
         }
     }
 }
