@@ -10,7 +10,7 @@ namespace ListViews.Tests.Infrastructure.ListScreen
         private IItemSpawner _itemSpawner;
         private List<List<IItem>> _itemCollectionList;
 
-        public ListScreenModelBuilder() : this(An.IItemSpawner.Build(),new List<List<IItem>>())
+        public ListScreenModelBuilder() : this(An.IItemSpawner.Build(),new List<List<IItem>>() { new List<IItem>()})
         {
         }
 
@@ -30,8 +30,15 @@ namespace ListViews.Tests.Infrastructure.ListScreen
         public ListScreenModelBuilder WithItemCollectionList(List<List<IItem>> itemCollectionList)
         {
             _itemCollectionList = itemCollectionList;
+            _itemCollectionList.Add(new List<IItem>());
             return this;
         }
+        public ListScreenModelBuilder WithItemList(List<IItem> itemList)
+        {
+            _itemCollectionList[0] = itemList;
+            return this;
+        }
+
 
         public override ListScreenModel Build()
         {

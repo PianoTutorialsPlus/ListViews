@@ -4,6 +4,65 @@
     "C:\\Users\\User\\Desktop\\Create with Code\\ListViews\\ListViews.Tests\\ListViews.Tests.csproj": {}
   },
   "projects": {
+    "C:\\Users\\User\\Desktop\\Create with Code\\ListViews\\ListViews.Model\\ListViews.Model.csproj": {
+      "restore": {
+        "projectUniqueName": "C:\\Users\\User\\Desktop\\Create with Code\\ListViews\\ListViews.Model\\ListViews.Model.csproj",
+        "projectName": "ListViews.Model",
+        "projectPath": "C:\\Users\\User\\Desktop\\Create with Code\\ListViews\\ListViews.Model\\ListViews.Model.csproj",
+        "frameworks": {
+          "net472": {
+            "projectReferences": {}
+          }
+        }
+      },
+      "frameworks": {
+        "net472": {}
+      }
+    },
+    "C:\\Users\\User\\Desktop\\Create with Code\\ListViews\\ListViews.Presenter\\ListViews.Presenter.csproj": {
+      "restore": {
+        "projectUniqueName": "C:\\Users\\User\\Desktop\\Create with Code\\ListViews\\ListViews.Presenter\\ListViews.Presenter.csproj",
+        "projectName": "ListViews.Presenter",
+        "projectPath": "C:\\Users\\User\\Desktop\\Create with Code\\ListViews\\ListViews.Presenter\\ListViews.Presenter.csproj",
+        "frameworks": {
+          "net48": {
+            "projectReferences": {
+              "C:\\Users\\User\\Desktop\\Create with Code\\ListViews\\ListViews.Model\\ListViews.Model.csproj": {
+                "projectPath": "C:\\Users\\User\\Desktop\\Create with Code\\ListViews\\ListViews.Model\\ListViews.Model.csproj"
+              },
+              "C:\\Users\\User\\Desktop\\Create with Code\\ListViews\\ListViews.View\\ListViews.View.csproj": {
+                "projectPath": "C:\\Users\\User\\Desktop\\Create with Code\\ListViews\\ListViews.View\\ListViews.View.csproj"
+              }
+            }
+          }
+        }
+      },
+      "frameworks": {
+        "net48": {}
+      }
+    },
+    "C:\\Users\\User\\Desktop\\Create with Code\\ListViews\\ListViews.Tests.Infrastructure\\ListViews.Tests.Infrastructure.csproj": {
+      "restore": {
+        "projectUniqueName": "C:\\Users\\User\\Desktop\\Create with Code\\ListViews\\ListViews.Tests.Infrastructure\\ListViews.Tests.Infrastructure.csproj",
+        "projectName": "ListViews.Tests.Infrastructure",
+        "projectPath": "C:\\Users\\User\\Desktop\\Create with Code\\ListViews\\ListViews.Tests.Infrastructure\\ListViews.Tests.Infrastructure.csproj",
+        "frameworks": {
+          "net48": {
+            "projectReferences": {
+              "C:\\Users\\User\\Desktop\\Create with Code\\ListViews\\ListViews.Model\\ListViews.Model.csproj": {
+                "projectPath": "C:\\Users\\User\\Desktop\\Create with Code\\ListViews\\ListViews.Model\\ListViews.Model.csproj"
+              },
+              "C:\\Users\\User\\Desktop\\Create with Code\\ListViews\\ListViews.Presenter\\ListViews.Presenter.csproj": {
+                "projectPath": "C:\\Users\\User\\Desktop\\Create with Code\\ListViews\\ListViews.Presenter\\ListViews.Presenter.csproj"
+              }
+            }
+          }
+        }
+      },
+      "frameworks": {
+        "net48": {}
+      }
+    },
     "C:\\Users\\User\\Desktop\\Create with Code\\ListViews\\ListViews.Tests\\ListViews.Tests.csproj": {
       "version": "1.0.0",
       "restore": {
@@ -31,7 +90,11 @@
         "frameworks": {
           "net48": {
             "targetAlias": "net48",
-            "projectReferences": {}
+            "projectReferences": {
+              "C:\\Users\\User\\Desktop\\Create with Code\\ListViews\\ListViews.Tests.Infrastructure\\ListViews.Tests.Infrastructure.csproj": {
+                "projectPath": "C:\\Users\\User\\Desktop\\Create with Code\\ListViews\\ListViews.Tests.Infrastructure\\ListViews.Tests.Infrastructure.csproj"
+              }
+            }
           }
         },
         "warningProperties": {
@@ -48,6 +111,10 @@
               "target": "Package",
               "version": "[16.5.0, )"
             },
+            "NSubstitute": {
+              "target": "Package",
+              "version": "[4.4.0, )"
+            },
             "NUnit": {
               "target": "Package",
               "version": "[3.12.0, )"
@@ -59,6 +126,21 @@
           },
           "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.100\\RuntimeIdentifierGraph.json"
         }
+      }
+    },
+    "C:\\Users\\User\\Desktop\\Create with Code\\ListViews\\ListViews.View\\ListViews.View.csproj": {
+      "restore": {
+        "projectUniqueName": "C:\\Users\\User\\Desktop\\Create with Code\\ListViews\\ListViews.View\\ListViews.View.csproj",
+        "projectName": "ListViews.View",
+        "projectPath": "C:\\Users\\User\\Desktop\\Create with Code\\ListViews\\ListViews.View\\ListViews.View.csproj",
+        "frameworks": {
+          "net48": {
+            "projectReferences": {}
+          }
+        }
+      },
+      "frameworks": {
+        "net48": {}
       }
     }
   }

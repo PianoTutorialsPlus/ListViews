@@ -62,6 +62,10 @@
       <Project>{5092CEEA-E4DD-4693-8B3E-8E95384D1A11}</Project>
       <Name>ListViews.Model</Name>
     </ProjectReference>
+    <ProjectReference Include="..\ListViews.Presenter\ListViews.Presenter.csproj">
+      <Project>{A5E0BE44-BFFB-47D2-9B3F-BD22F3F6565F}</Project>
+      <Name>ListViews.Presenter</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

@@ -33,6 +33,9 @@ namespace ListViews.Model.UI
 
         public void DeleteItem(int itemIndex)
         {
+            if(itemIndex < 0 || _itemList.Count < itemIndex)
+                throw new ArgumentOutOfRangeException("index");
+
             _itemList.RemoveAt(itemIndex);
             AddItemNamesFromList();
         }
