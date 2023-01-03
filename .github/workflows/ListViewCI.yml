@@ -1,0 +1,43 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+    branches: [ "Develop" ]
+
+jobs:
+
+  build-project:
+    name: Build application
+    runs-on: windows-latest  # For a list of available runner types, refer to
+                             # https://help.github.com/en/actions/reference/workflow-syntax-for-github-actions#jobsjob_idruns-on
+
+    env:
+      Solution_Name: ListViews.sln                                            # Replace with your solution name, i.e. MyWpfApp.sln.
+      #Test_Assembly: ChessWindowsForms.Tests.dll
+      #Test_Project_Folder: .\Chess\ChessWindowsForms.Tests\bin\Debug\net48\
+    
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+      with:
+        fetch-depth: 0
+
+    - name: Setup MSBuild
+      uses: microsoft/setup-msbuild@v1.1.3
+      
+    - name: Setup NuGet
+      uses: NuGet/setup-nuget@v1.1.1
+      
+    - name: Restore Nuget Packages
+      run: nuget restore $env:Solution_Name
+    
+    - name: Run the Solution
+      run: msbuild $env:Solution_Name
+
+    - name: Execute Unit Tests
+      uses: microsoft/vstest-action@v1.0.0
+      with:
+        testAssembly: ListViews.Tests.dll
+        searchFolder: .\ListViews.Tests\bin\Debug\net48\
+        runInParallel: true
