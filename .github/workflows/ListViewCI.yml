@@ -2,8 +2,8 @@ name: CI
 
 on:
   push:
-  pull_request:
-    branches: [ "Develop" ]
+  #pull_request:
+  #  branches: [ "Develop" ]
 
 jobs:
 
@@ -14,8 +14,8 @@ jobs:
 
     env:
       Solution_Name: ListViews.sln                                            # Replace with your solution name, i.e. MyWpfApp.sln.
-      #Test_Assembly: ChessWindowsForms.Tests.dll
-      #Test_Project_Folder: .\Chess\ChessWindowsForms.Tests\bin\Debug\net48\
+      #Test_Assembly: ListViews.Tests.dll
+      #Test_Project_Folder: .\ListViews.Tests\bin\Debug\net48\
     
     steps:
     - name: Checkout

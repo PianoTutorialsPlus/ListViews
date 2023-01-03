@@ -1,6 +1,0 @@
-C:\Users\User\Desktop\Create with Code\ListViews\ListViews.Model\bin\Debug\ListViews.Model.dll
-C:\Users\User\Desktop\Create with Code\ListViews\ListViews.Model\bin\Debug\ListViews.Model.pdb
-C:\Users\User\Desktop\Create with Code\ListViews\ListViews.Model\obj\Debug\ListViews.Model.csproj.AssemblyReference.cache
-C:\Users\User\Desktop\Create with Code\ListViews\ListViews.Model\obj\Debug\ListViews.Model.csproj.CoreCompileInputs.cache
-C:\Users\User\Desktop\Create with Code\ListViews\ListViews.Model\obj\Debug\ListViews.Model.dll
-C:\Users\User\Desktop\Create with Code\ListViews\ListViews.Model\obj\Debug\ListViews.Model.pdb
