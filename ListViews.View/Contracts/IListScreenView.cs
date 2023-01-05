@@ -7,6 +7,7 @@ namespace ListViews.View.Contracts
     {
         event Action OnAddedItem;
         event Action<int> OnDeletedItem;
-        void RefreshItemList(List<object> itemNames);
+        List<string> ItemList { get; set; }
+        string TextboxItemCount { get; set; }
     }
 }

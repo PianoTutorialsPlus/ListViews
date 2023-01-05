@@ -1,6 +1,8 @@
 ﻿using ListViews.View.Contracts;
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Windows.Forms;
 
 namespace ListViews.View
@@ -10,7 +12,24 @@ namespace ListViews.View
 
         public event Action OnAddedItem;
         public event Action<int> OnDeletedItem;
-        
+
+        public string TextboxItemCount 
+        {
+            get => textBoxItemCount.Text;
+            set => textBoxItemCount.Text =  value; 
+        }   
+
+        public List<string> ItemList 
+        {
+            get => itemListView.Items.Cast<string>().ToList();
+
+            set
+            {
+                itemListView.Items.Clear();
+                itemListView.Items.AddRange(value.ToArray());
+            }
+        }
+     
         public FormListScreen()
         {
             InitializeComponent();
@@ -19,23 +38,6 @@ namespace ListViews.View
         private void buttonAddItem_Click(object sender, EventArgs e)
         {
             OnAddedItem?.Invoke();
-        }
-
-        public void RefreshItemList(List<object> itemNames)
-        {
-            itemListView.Items.Clear();
-
-            foreach (object itemName in itemNames)
-            {
-                itemListView.Items.Add(itemName);
-            }
-
-            UpdateItemCountText();
-        }
-
-        private void UpdateItemCountText()
-        {
-            textBoxItemCount.Text = itemListView.Items.Count.ToString();
         }
 
         private void buttonDeleteItem_Click(object sender, EventArgs e)

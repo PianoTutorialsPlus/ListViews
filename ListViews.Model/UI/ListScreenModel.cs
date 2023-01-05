@@ -1,6 +1,7 @@
 ﻿using ListViews.Model.Contracts;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace ListViews.Model.UI
 {
@@ -10,7 +11,7 @@ namespace ListViews.Model.UI
         private List<IItem> _itemList;
         private List<List<IItem>> _itemCollectionList; 
 
-        public event Action<List<object>> OnRefreshedItemList;
+        public event Action<List<string>> OnRefreshedItemList;
 
         public ListScreenModel(
             IItemSpawner itemSpawner, 
@@ -39,14 +40,7 @@ namespace ListViews.Model.UI
 
         private void AddItemNamesFromList()
         {
-            List<object> itemNames = new List<object>();
-            
-            foreach (IItem itemName in _itemList)
-            {
-                itemNames.Add(itemName.Name);
-            }
-
-            OnRefreshedItemList?.Invoke(itemNames);
+            OnRefreshedItemList?.Invoke(_itemList.Select(itemName => itemName.Name).ToList());
         }
     }
 }
