@@ -1,10 +1,11 @@
-﻿using System;
+﻿using ListViews.View.Contracts;
+using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
 
 namespace ListViews.View
 {
-    public partial class FormListScreen : Form
+    public partial class FormListScreen : Form, IListScreenView
     {
 
         public event Action OnAddedItem;

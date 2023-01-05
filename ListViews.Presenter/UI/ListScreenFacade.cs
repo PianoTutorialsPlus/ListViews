@@ -1,21 +1,16 @@
-﻿using ListViews.Model.UI;
-using ListViews.View;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using ListViews.Model.Contracts;
+using ListViews.View.Contracts;
 
 namespace ListViews.Presenter.UI
 {
     public class ListScreenFacade
     {
-        private ListScreenModel _listScreenModel;
-        private FormListScreen _listScreenView;
+        private IListScreenModel _listScreenModel;
+        private IListScreenView _listScreenView;
 
         public ListScreenFacade(
-            ListScreenModel listScreenModel, 
-            FormListScreen listScreenView)
+            IListScreenModel listScreenModel, 
+            IListScreenView listScreenView)
         {
             _listScreenModel = listScreenModel;
             _listScreenView = listScreenView;
