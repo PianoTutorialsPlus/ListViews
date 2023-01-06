@@ -5,7 +5,9 @@ namespace ListViews.Model.Contracts
 {
     public interface IListScreenModel
     {
-        event Action<List<string>> OnRefreshedItemList;
+        List<string> ItemList { get; }
+
+        event Action OnRefreshedItemList;
 
         void AddItem();
         void DeleteItem(int itemIndex);

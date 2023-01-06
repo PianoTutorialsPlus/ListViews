@@ -1,7 +1,6 @@
 using ListViews.Model.Contracts;
 using ListViews.Model.UI;
 using ListViews.Presenter;
-using ListViews.Presenter.Factories;
 using ListViews.Tests.Infrastructure;
 using NUnit.Framework;
 using System;
@@ -64,17 +63,18 @@ namespace ListViews.Tests.Model
             [Test]
             public void Given_Empty_Itemlist_When_Item_Is_Added_Then_OnRefreshedItemList_Action_Is_Triggered()
             {
-                var count = -1;
+                var count = 0;
                 var listScreen = ListScreenModel;
 
-                listScreen.OnRefreshedItemList += (args) =>
+                listScreen.OnRefreshedItemList += () =>
                 {
-                    count = args.Count;
+                    count++;
                 };
 
                 listScreen.AddItem();
                 listScreen.AddItem();
 
+                
                 Assert.AreEqual(2, count);
             }
         }

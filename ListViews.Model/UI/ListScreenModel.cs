@@ -9,9 +9,11 @@ namespace ListViews.Model.UI
     {
         private IItemSpawner _itemSpawner;
         private List<IItem> _itemList;
-        private List<List<IItem>> _itemCollectionList; 
+        private List<List<IItem>> _itemCollectionList;
 
-        public event Action<List<string>> OnRefreshedItemList;
+        public List<string> ItemList => _itemList.Select(itemName => itemName.Name).ToList();
+
+        public event Action OnRefreshedItemList;
 
         public ListScreenModel(
             IItemSpawner itemSpawner, 
@@ -35,12 +37,13 @@ namespace ListViews.Model.UI
                 throw new ArgumentOutOfRangeException("index");
 
             _itemList.RemoveAt(itemIndex);
+
             AddItemNamesFromList();
         }
 
         private void AddItemNamesFromList()
         {
-            OnRefreshedItemList?.Invoke(_itemList.Select(itemName => itemName.Name).ToList());
+            OnRefreshedItemList?.Invoke();
         }
     }
 }

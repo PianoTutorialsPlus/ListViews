@@ -1,8 +1,6 @@
 ﻿using ListViews.Model.Contracts;
 using ListViews.View.Contracts;
-using System;
 using System.Collections.Generic;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.Header;
 
 namespace ListViews.Presenter.UI
 {
@@ -28,10 +26,12 @@ namespace ListViews.Presenter.UI
             _listScreenModel.OnRefreshedItemList += RefreshItemList;
         }
 
-        private void RefreshItemList(List<string> itemList)
+        public void RefreshItemList()
         {
-            _listScreenView.ItemList = itemList;
-            _listScreenView.TextboxItemCount = itemList.Count.ToString();
+
+            _listScreenView.ItemList = _listScreenModel.ItemList;
+
+            _listScreenView.TextboxItemCount = (_listScreenModel.ItemList.Count > 0) ? _listScreenModel.ItemList.Count.ToString(): 0.ToString();
         }
     }
 }
