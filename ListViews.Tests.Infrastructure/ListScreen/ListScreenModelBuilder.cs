@@ -9,7 +9,7 @@ namespace ListViews.Tests.Infrastructure.ListScreen
     public class ListScreenModelBuilder : TestDataBuilder<ListScreenModel>
     {
         private IItemSpawner _itemSpawner;
-        private List<IItemList> _itemCollectionList;
+        private ListScreenModel.Settings _settings = new ListScreenModel.Settings();
 
         public ListScreenModelBuilder() : this(An.IItemSpawner.Build(),new List<IItemList>() { new ItemList()})
         {
@@ -20,7 +20,7 @@ namespace ListViews.Tests.Infrastructure.ListScreen
             List<IItemList> itemCollectionList)
         {
             _itemSpawner = itemSpawner;
-            _itemCollectionList = itemCollectionList;
+            _settings.ItemListCollection = itemCollectionList;
         }
 
         public ListScreenModelBuilder WithIItemSpawner(IItemSpawner itemSpawner)
@@ -30,24 +30,24 @@ namespace ListViews.Tests.Infrastructure.ListScreen
         }
         public ListScreenModelBuilder WithItemCollectionList(List<IItemList> itemCollectionList)
         {
-            _itemCollectionList = itemCollectionList;
-            _itemCollectionList.Add(new ItemList());
+            _settings.ItemListCollection = itemCollectionList;
+            _settings.ItemListCollection.Add(new ItemList());
             return this;
         }
         public ListScreenModelBuilder WithItemList(ItemList itemList)
         {
-            _itemCollectionList[0] = itemList;
+            _settings.ItemListCollection[0] = itemList;
             return this;
         }
-        public ListScreenModel WithItemListCollection(List<IItemList> itemCollectionList)
+        public ListScreenModelBuilder WithItemListCollection(List<IItemList> itemCollectionList)
         {
-            _itemCollectionList = itemCollectionList;
+            _settings.ItemListCollection = itemCollectionList;
             return this;
         }
 
         public override ListScreenModel Build()
         {
-            return new ListScreenModel(_itemSpawner, _itemCollectionList);
+            return new ListScreenModel(_settings,_itemSpawner);
         }
 
     }

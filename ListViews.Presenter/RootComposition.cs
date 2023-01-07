@@ -34,8 +34,8 @@ namespace ListViews.Presenter
         private void SetupSettings()
         {
             _settings = new Settings();
-            _settings.ItemList = new ItemList();
-            _settings.ItemCollectionList = _itemSpawner.SpawnList(new List<IItemList>());
+            _settings.ListScreenModelHandler = new ListScreenModel.Settings();
+            _settings.ListScreenModelHandler.ItemListCollection = _itemSpawner.SpawnList(new List<IItemList>());
 
         }
         private void SetupSpawner()
@@ -46,7 +46,7 @@ namespace ListViews.Presenter
         private void SetupListScreen()
         {
             FormListScreen listScreenView = new FormListScreen();
-            ListScreenModel listScreenModel = new ListScreenModel(_itemSpawner, _settings.ItemCollectionList);
+            ListScreenModel listScreenModel = new ListScreenModel(_settings.ListScreenModelHandler,_itemSpawner);
             _listScreenPresenter = new ListScreenFacade(listScreenModel, listScreenView);
 
             Application.Run(listScreenView);
@@ -55,8 +55,7 @@ namespace ListViews.Presenter
         [Serializable]
         public class Settings
         {
-            public IItemList ItemList { get; internal set; }
-            public List<IItemList> ItemCollectionList { get; internal set; }
+            public ListScreenModel.Settings ListScreenModelHandler;
         }
     }
 }

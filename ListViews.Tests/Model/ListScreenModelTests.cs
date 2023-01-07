@@ -193,7 +193,7 @@ namespace ListViews.Tests.Model
                 Assert.AreEqual(2, itemCollection.Count);
             }
             [Test]
-            public void Given_Itemlist_With_3_Items_When_ListIndex_To_Delete_Is_Lower_Or_Equal_To_ItemCollectionlist_Count_Then_Itemlist_Is_Reduced()
+            public void Given_Itemlist_With_3_Items_When_ItemList_Is_Deleted_From_ItemCollection_Then_Itemlist_Count_Is_0()
             {
                 var itemList = GetNewItemList(3);
                 var itemCollection = GetNewItemCollectionList(itemList);

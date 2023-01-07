@@ -7,6 +7,7 @@ namespace ListViews.Model.UI
 {
     public class ListScreenModel : IListScreenModel
     {
+        private readonly Settings _settings;
         private IItemSpawner _itemSpawner;
         private IItemList _itemList;
         private List<IItemList> _itemCollectionList;
@@ -23,12 +24,14 @@ namespace ListViews.Model.UI
 
 
         public ListScreenModel(
-            IItemSpawner itemSpawner, 
-            List<IItemList> itemCollectionList)
+            Settings settings,
+            IItemSpawner itemSpawner 
+            /*List<IItemList> itemCollectionList*/)
         {
+            _settings = settings;
             _itemSpawner = itemSpawner;
-            _itemCollectionList = itemCollectionList;
-            _itemList = itemCollectionList[0];
+            _itemCollectionList = _settings.ItemListCollection;
+            _itemList = _settings.ItemListCollection[0];
         }
         public void AddList()
         {
@@ -76,6 +79,11 @@ namespace ListViews.Model.UI
 
             _itemList = _itemCollectionList[listIndex]; 
             RefreshItemList();
+        }
+        [Serializable]
+        public class Settings
+        {
+            public List<IItemList> ItemListCollection;
         }
     }
 }
