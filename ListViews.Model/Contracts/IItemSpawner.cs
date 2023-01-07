@@ -8,6 +8,7 @@ namespace ListViews.Model.Contracts
 {
     public interface IItemSpawner
     {
-        List<IItem> Spawn(List<IItem> itemList);
+        IItemList SpawnItem(IItemList itemList);
+        List<IItemList> SpawnList(List<IItemList> itemCollectionList);
     }
 }

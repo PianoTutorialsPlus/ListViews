@@ -22,8 +22,8 @@ namespace ListViews.Presenter
 
         void Main()
         {
-            SetupSettings();
             SetupSpawner();
+            SetupSettings();
             SetupListScreen();
             FormMainScreen mainScreen = new FormMainScreen();
 
@@ -34,11 +34,9 @@ namespace ListViews.Presenter
         private void SetupSettings()
         {
             _settings = new Settings();
-            _settings.ItemList = new List<IItem>();
-            _settings.ItemCollectionList = new List<List<IItem>>
-            {
-                _settings.ItemList
-            };
+            _settings.ItemList = new ItemList();
+            _settings.ItemCollectionList = _itemSpawner.SpawnList(new List<IItemList>());
+
         }
         private void SetupSpawner()
         {
@@ -57,8 +55,8 @@ namespace ListViews.Presenter
         [Serializable]
         public class Settings
         {
-            public List<IItem> ItemList { get; internal set; }
-            public List<List<IItem>> ItemCollectionList { get; internal set; }
+            public IItemList ItemList { get; internal set; }
+            public List<IItemList> ItemCollectionList { get; internal set; }
         }
     }
 }

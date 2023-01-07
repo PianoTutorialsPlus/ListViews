@@ -53,6 +53,8 @@
   <ItemGroup>
     <Compile Include="A.cs" />
     <Compile Include="Factories\IItemSpawnerBuilder.cs" />
+    <Compile Include="General\ItemBuilder.cs" />
+    <Compile Include="General\ItemListBuilder.cs" />
     <Compile Include="ListScreen\IListScreenModelBuilder.cs" />
     <Compile Include="ListScreen\IListScreenViewBuilder.cs" />
     <Compile Include="ListScreen\ListScreenModelBuilder.cs" />

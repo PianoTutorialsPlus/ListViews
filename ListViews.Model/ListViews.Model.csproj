@@ -42,6 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Contracts\IItem.cs" />
+    <Compile Include="Contracts\IItemList.cs" />
     <Compile Include="Contracts\IItemSpawner.cs" />
     <Compile Include="Contracts\IListScreenModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

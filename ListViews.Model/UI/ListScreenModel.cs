@@ -8,42 +8,74 @@ namespace ListViews.Model.UI
     public class ListScreenModel : IListScreenModel
     {
         private IItemSpawner _itemSpawner;
-        private List<IItem> _itemList;
-        private List<List<IItem>> _itemCollectionList;
+        private IItemList _itemList;
+        private List<IItemList> _itemCollectionList;
 
-        public List<string> ItemList => _itemList.Select(itemName => itemName.Name).ToList();
+        public List<string> CollectionList => _itemCollectionList != null
+            ? _itemCollectionList.Select(itemList => itemList.Name).ToList()
+            : new List<string>();
+        public List<string> ItemList => _itemList != null 
+            ? _itemList.Items.Select(itemName => itemName.Name).ToList() 
+            : new List<string>();
 
+        public event Action OnRefreshedCollectionList;
         public event Action OnRefreshedItemList;
+
 
         public ListScreenModel(
             IItemSpawner itemSpawner, 
-            List<List<IItem>> itemCollectionList)
+            List<IItemList> itemCollectionList)
         {
             _itemSpawner = itemSpawner;
             _itemCollectionList = itemCollectionList;
             _itemList = itemCollectionList[0];
         }
+        public void AddList()
+        {
+            _itemCollectionList = _itemSpawner.SpawnList(_itemCollectionList);
+            RefreshCollectionList();
+        }
+        public void DeleteList(int listIndex)
+        {
+            if (listIndex < 0 || _itemCollectionList.Count < listIndex)
+                throw new ArgumentOutOfRangeException("List Index");
 
+            _itemCollectionList.RemoveAt(listIndex);
+            _itemList = null;
+
+            RefreshItemList();
+            RefreshCollectionList();
+        }
+        private void RefreshCollectionList()
+        {
+            OnRefreshedCollectionList?.Invoke();
+        }
         public void AddItem()
         {
-            _itemList = _itemSpawner.Spawn(_itemList);
+            _itemList = _itemSpawner.SpawnItem(_itemList);
 
-            AddItemNamesFromList();
+            RefreshItemList();
         }
-
         public void DeleteItem(int itemIndex)
         {
-            if(itemIndex < 0 || _itemList.Count < itemIndex)
-                throw new ArgumentOutOfRangeException("index");
+            if(itemIndex < 0 || _itemList.Items.Count < itemIndex)
+                throw new ArgumentOutOfRangeException("Item Index");
 
-            _itemList.RemoveAt(itemIndex);
+            _itemList.Items.RemoveAt(itemIndex);
 
-            AddItemNamesFromList();
+            RefreshItemList();
         }
-
-        private void AddItemNamesFromList()
+        private void RefreshItemList()
         {
             OnRefreshedItemList?.Invoke();
+        }
+        public void ShowItemList(int listIndex)
+        {
+            if (listIndex < 0 || _itemCollectionList.Count < listIndex)
+                throw new ArgumentOutOfRangeException("List Index");
+
+            _itemList = _itemCollectionList[listIndex]; 
+            RefreshItemList();
         }
     }
 }

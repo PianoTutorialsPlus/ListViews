@@ -1,5 +1,6 @@
 ﻿using ListViews.Model.Contracts;
 using ListViews.Model.UI;
+using ListViews.Presenter;
 using System;
 using System.Collections.Generic;
 
@@ -8,15 +9,15 @@ namespace ListViews.Tests.Infrastructure.ListScreen
     public class ListScreenModelBuilder : TestDataBuilder<ListScreenModel>
     {
         private IItemSpawner _itemSpawner;
-        private List<List<IItem>> _itemCollectionList;
+        private List<IItemList> _itemCollectionList;
 
-        public ListScreenModelBuilder() : this(An.IItemSpawner.Build(),new List<List<IItem>>() { new List<IItem>()})
+        public ListScreenModelBuilder() : this(An.IItemSpawner.Build(),new List<IItemList>() { new ItemList()})
         {
         }
 
         public ListScreenModelBuilder(
             IItemSpawner itemSpawner, 
-            List<List<IItem>> itemCollectionList)
+            List<IItemList> itemCollectionList)
         {
             _itemSpawner = itemSpawner;
             _itemCollectionList = itemCollectionList;
@@ -27,22 +28,27 @@ namespace ListViews.Tests.Infrastructure.ListScreen
             _itemSpawner = itemSpawner;
             return this;
         }
-        public ListScreenModelBuilder WithItemCollectionList(List<List<IItem>> itemCollectionList)
+        public ListScreenModelBuilder WithItemCollectionList(List<IItemList> itemCollectionList)
         {
             _itemCollectionList = itemCollectionList;
-            _itemCollectionList.Add(new List<IItem>());
+            _itemCollectionList.Add(new ItemList());
             return this;
         }
-        public ListScreenModelBuilder WithItemList(List<IItem> itemList)
+        public ListScreenModelBuilder WithItemList(ItemList itemList)
         {
             _itemCollectionList[0] = itemList;
             return this;
         }
-
+        public ListScreenModel WithItemListCollection(List<IItemList> itemCollectionList)
+        {
+            _itemCollectionList = itemCollectionList;
+            return this;
+        }
 
         public override ListScreenModel Build()
         {
             return new ListScreenModel(_itemSpawner, _itemCollectionList);
         }
+
     }
 }

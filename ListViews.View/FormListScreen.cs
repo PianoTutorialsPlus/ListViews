@@ -9,9 +9,11 @@ namespace ListViews.View
 {
     public partial class FormListScreen : Form, IListScreenView
     {
-
+        public event Action OnAddedList;
+        public event Action<int> OnDeletedList;
         public event Action OnAddedItem;
         public event Action<int> OnDeletedItem;
+        public event Action<int> OnShowItemList;
 
         public string TextboxItemCount 
         {
@@ -21,15 +23,25 @@ namespace ListViews.View
 
         public List<string> ItemList 
         {
-            get => itemListView.Items.Cast<string>().ToList();
+            get => listBoxItems.Items.Cast<string>().ToList();
 
             set
             {
-                itemListView.Items.Clear();
-                itemListView.Items.AddRange(value.ToArray());
+                listBoxItems.Items.Clear();
+                listBoxItems.Items.AddRange(value.ToArray());
             }
         }
-     
+        public List<string> CollectionList
+        {
+            get => listBoxCollection.Items.Cast<string>().ToList();
+            set
+            {
+                listBoxCollection.Items.Clear();
+                listBoxCollection.Items.AddRange(value.ToArray());
+            }
+        }
+
+
         public FormListScreen()
         {
             InitializeComponent();
@@ -42,10 +54,33 @@ namespace ListViews.View
 
         private void buttonDeleteItem_Click(object sender, EventArgs e)
         {
-            if (itemListView.SelectionMode == SelectionMode.One &&
-                itemListView.SelectedIndex >= 0)
+            if (listBoxItems.SelectionMode == SelectionMode.One &&
+                listBoxItems.SelectedIndex >= 0)
             {
-                OnDeletedItem?.Invoke(itemListView.SelectedIndex);
+                OnDeletedItem?.Invoke(listBoxItems.SelectedIndex);
+            }
+        }
+
+        private void buttonAddList_Click(object sender, EventArgs e)
+        {
+            OnAddedList?.Invoke();
+        }
+
+        private void buttonDeleteList_Click(object sender, EventArgs e)
+        {
+            if (listBoxCollection.SelectionMode == SelectionMode.One &&
+                listBoxCollection.SelectedIndex >= 0)
+            {
+                OnDeletedList?.Invoke(listBoxCollection.SelectedIndex);
+            }
+        }
+
+        private void Refresh(object sender, EventArgs e)
+        {
+            if (listBoxCollection.SelectionMode == SelectionMode.One &&
+                listBoxCollection.SelectedIndex >= 0)
+            {
+                OnShowItemList?.Invoke(listBoxCollection.SelectedIndex);
             }
         }
     }
