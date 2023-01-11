@@ -13,7 +13,11 @@ namespace ListViews.View
         public event Action<int> OnDeletedList;
         public event Action OnAddedItem;
         public event Action<int> OnDeletedItem;
-        public event Action<int> OnShowItemList;
+        public event Action<int> OnShowedItemList;
+
+        public event Action OnClosedForm;
+        public event Action OnSavedFile;
+        
 
         public string TextboxItemCount 
         {
@@ -80,8 +84,18 @@ namespace ListViews.View
             if (listBoxCollection.SelectionMode == SelectionMode.One &&
                 listBoxCollection.SelectedIndex >= 0)
             {
-                OnShowItemList?.Invoke(listBoxCollection.SelectedIndex);
+                OnShowedItemList?.Invoke(listBoxCollection.SelectedIndex);
             }
+        }
+
+        private void buttonSaveFile_Click(object sender, EventArgs e)
+        {
+            OnSavedFile?.Invoke();
+        }
+
+        private void FormListScreen_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            OnClosedForm?.Invoke();
         }
     }
 }

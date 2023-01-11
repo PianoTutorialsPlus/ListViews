@@ -3,8 +3,11 @@ using ListViews.Model.UI;
 using ListViews.Presenter.Factories;
 using ListViews.Presenter.UI;
 using ListViews.View;
+using ListViews.View.Contracts;
 using System;
 using System.Collections.Generic;
+using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.Windows.Forms;
 
 namespace ListViews.Presenter
@@ -14,6 +17,9 @@ namespace ListViews.Presenter
         private Settings _settings;
         private ItemSpawner _itemSpawner;
         private ListScreenFacade _listScreenPresenter;
+        private FormMainScreen _mainScreenView;
+        private MainScreenFacade _mainScreenPresenter;
+        private FormListScreen _listScreenView;
 
         public RootComposition()
         {
@@ -25,11 +31,10 @@ namespace ListViews.Presenter
             SetupSpawner();
             SetupSettings();
             SetupListScreen();
-            FormMainScreen mainScreen = new FormMainScreen();
+            SetupMainScreen();
 
-           // Application.Run(mainScreen);
+            Application.Run(_mainScreenView);
         }
-
 
         private void SetupSettings()
         {
@@ -42,14 +47,20 @@ namespace ListViews.Presenter
         {
             _itemSpawner = new ItemSpawner();
         }
-
         private void SetupListScreen()
         {
-            FormListScreen listScreenView = new FormListScreen();
+            _listScreenView = new FormListScreen();
             ListScreenModel listScreenModel = new ListScreenModel(_settings.ListScreenModelHandler,_itemSpawner);
-            _listScreenPresenter = new ListScreenFacade(listScreenModel, listScreenView);
+            _listScreenPresenter = new ListScreenFacade(listScreenModel, _listScreenView);
 
-            Application.Run(listScreenView);
+            //Application.Run(listScreenView);
+        }
+
+        private void SetupMainScreen()
+        {
+            _mainScreenView = new FormMainScreen();
+            _mainScreenPresenter = new MainScreenFacade(_mainScreenView, _listScreenPresenter);
+
         }
 
         [Serializable]

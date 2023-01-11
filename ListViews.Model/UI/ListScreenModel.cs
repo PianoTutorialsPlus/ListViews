@@ -1,13 +1,15 @@
 ﻿using ListViews.Model.Contracts;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Runtime.Serialization.Formatters.Binary;
 
 namespace ListViews.Model.UI
 {
     public class ListScreenModel : IListScreenModel
     {
-        private readonly Settings _settings;
+        private Settings _settings;
         private IItemSpawner _itemSpawner;
         private IItemList _itemList;
         private List<IItemList> _itemCollectionList;
@@ -26,12 +28,13 @@ namespace ListViews.Model.UI
         public ListScreenModel(
             Settings settings,
             IItemSpawner itemSpawner 
-            /*List<IItemList> itemCollectionList*/)
+            )
         {
             _settings = settings;
             _itemSpawner = itemSpawner;
             _itemCollectionList = _settings.ItemListCollection;
             _itemList = _settings.ItemListCollection[0];
+
         }
         public void AddList()
         {
@@ -80,6 +83,31 @@ namespace ListViews.Model.UI
             _itemList = _itemCollectionList[listIndex]; 
             RefreshItemList();
         }
+
+        public void SaveFile()
+        {
+            using (Stream stream = File.Create("Test.dat"))
+            {
+                var binaryFormatter = new BinaryFormatter();
+                binaryFormatter.Serialize(stream, _settings);
+            }
+        }
+
+        public void LoadFile()
+        {
+            using (Stream stream = File.OpenRead("Test.dat"))
+            {
+                var binaryFormatter = new BinaryFormatter();
+                _settings = (Settings)binaryFormatter.Deserialize(stream);
+
+                _itemCollectionList = _settings.ItemListCollection;
+                _itemList = _settings.ItemListCollection[0];
+
+                RefreshItemList();
+                RefreshCollectionList();
+            }
+        }
+
         [Serializable]
         public class Settings
         {

@@ -50,6 +50,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Contracts\IListScreenView.cs" />
+    <Compile Include="Contracts\IMainScreenView.cs" />
     <Compile Include="FormMainScreen.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -18,6 +18,9 @@ namespace ListViews.Presenter.UI
             _listScreenView = listScreenView;
 
             ConnectEvents();
+
+            RefreshItemList();
+            RefreshCollectionList();
         }
 
         private void ConnectEvents()
@@ -30,8 +33,11 @@ namespace ListViews.Presenter.UI
             _listScreenView.OnDeletedItem += _listScreenModel.DeleteItem;
             _listScreenModel.OnRefreshedItemList += RefreshItemList;
 
-            _listScreenView.OnShowItemList += _listScreenModel.ShowItemList;
+            _listScreenView.OnShowedItemList += _listScreenModel.ShowItemList;
+            _listScreenView.OnSavedFile += _listScreenModel.SaveFile;
+
         }
+
 
         private void RefreshCollectionList()
         {
@@ -44,5 +50,15 @@ namespace ListViews.Presenter.UI
 
             _listScreenView.TextboxItemCount = (_listScreenModel.ItemList.Count > 0) ? _listScreenModel.ItemList.Count.ToString(): 0.ToString();
         }
+
+        public void Show()
+        {
+            _listScreenView.Show();
+        }
+        public void LoadFile()
+        {
+            _listScreenModel.LoadFile();
+        }
+       
     }
 }

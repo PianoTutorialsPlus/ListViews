@@ -11,7 +11,7 @@ namespace ListViews.Tests.Infrastructure.ListScreen
         private IItemSpawner _itemSpawner;
         private ListScreenModel.Settings _settings = new ListScreenModel.Settings();
 
-        public ListScreenModelBuilder() : this(An.IItemSpawner.Build(),new List<IItemList>() { new ItemList()})
+        public ListScreenModelBuilder() : this(An.IItemSpawner.Build(),new List<IItemList>() { (ItemList)An.ItemList})
         {
         }
 
@@ -31,7 +31,7 @@ namespace ListViews.Tests.Infrastructure.ListScreen
         public ListScreenModelBuilder WithItemCollectionList(List<IItemList> itemCollectionList)
         {
             _settings.ItemListCollection = itemCollectionList;
-            _settings.ItemListCollection.Add(new ItemList());
+            _settings.ItemListCollection.Add((ItemList)An.ItemList);
             return this;
         }
         public ListScreenModelBuilder WithItemList(ItemList itemList)

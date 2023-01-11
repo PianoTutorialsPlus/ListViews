@@ -36,6 +36,7 @@
             this.listBoxCollection = new System.Windows.Forms.ListBox();
             this.buttonAddList = new System.Windows.Forms.Button();
             this.buttonDeleteList = new System.Windows.Forms.Button();
+            this.buttonSaveFile = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // buttonAddItem
@@ -112,11 +113,22 @@
             this.buttonDeleteList.UseVisualStyleBackColor = true;
             this.buttonDeleteList.Click += new System.EventHandler(this.buttonDeleteList_Click);
             // 
+            // buttonSaveFile
+            // 
+            this.buttonSaveFile.Location = new System.Drawing.Point(277, 314);
+            this.buttonSaveFile.Name = "buttonSaveFile";
+            this.buttonSaveFile.Size = new System.Drawing.Size(107, 51);
+            this.buttonSaveFile.TabIndex = 9;
+            this.buttonSaveFile.Text = "Save File";
+            this.buttonSaveFile.UseVisualStyleBackColor = true;
+            this.buttonSaveFile.Click += new System.EventHandler(this.buttonSaveFile_Click);
+            // 
             // FormListScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.buttonSaveFile);
             this.Controls.Add(this.buttonDeleteList);
             this.Controls.Add(this.buttonAddList);
             this.Controls.Add(this.listBoxCollection);
@@ -127,6 +139,7 @@
             this.Controls.Add(this.buttonAddItem);
             this.Name = "FormListScreen";
             this.Text = "ListScreen";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FormListScreen_FormClosed);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -141,5 +154,6 @@
         private System.Windows.Forms.ListBox listBoxCollection;
         private System.Windows.Forms.Button buttonAddList;
         private System.Windows.Forms.Button buttonDeleteList;
+        private System.Windows.Forms.Button buttonSaveFile;
     }
 }

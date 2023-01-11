@@ -15,6 +15,8 @@ namespace ListViews.Model.Contracts
         void AddList();
         void DeleteItem(int itemIndex);
         void DeleteList(int listIndex);
+        void LoadFile();
+        void SaveFile();
         void ShowItemList(int listIndex);
     }
 }

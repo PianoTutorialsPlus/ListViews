@@ -7,11 +7,12 @@ using System.Threading.Tasks;
 
 namespace ListViews.Presenter
 {
+    [Serializable]
     public class ItemList : IItemList
     {
 		private List<IItem> _itemList;
         public string Name { get; set; }
-
+        
         public ItemList(List<IItem> itemList)
         {
             _itemList = itemList;

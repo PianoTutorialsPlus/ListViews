@@ -40,6 +40,7 @@
             this.buttonLoadList.TabIndex = 0;
             this.buttonLoadList.Text = "Liste Laden";
             this.buttonLoadList.UseVisualStyleBackColor = true;
+            this.buttonLoadList.Click += new System.EventHandler(this.buttonLoadList_Click);
             // 
             // buttonNewList
             // 
@@ -49,6 +50,7 @@
             this.buttonNewList.TabIndex = 1;
             this.buttonNewList.Text = "Neue Liste";
             this.buttonNewList.UseVisualStyleBackColor = true;
+            this.buttonNewList.Click += new System.EventHandler(this.buttonNewList_Click);
             // 
             // FormMainScreen
             // 
