@@ -1,5 +1,6 @@
 ﻿using ListViews.Model.Contracts;
 using ListViews.Presenter.UI;
+using ListViews.Service.Contracts;
 using ListViews.View.Contracts;
 using System;
 using System.Collections.Generic;
@@ -12,12 +13,12 @@ namespace ListViews.Tests.Infrastructure.ListScreen
     public class ListScreenPresenterBuilder : TestDataBuilder<ListScreenFacade>
     {
         private IListScreenView _listScreenView;
-        private IListScreenModel _listScreenModel;
+        private IListScreenService _listScreenModel;
 
         public ListScreenPresenterBuilder() : this(An.IListScreenView.Build(),An.IListScreenModel.Build())
         {
         }
-        public ListScreenPresenterBuilder(IListScreenView listScreenView, IListScreenModel listScreenModel)
+        public ListScreenPresenterBuilder(IListScreenView listScreenView, IListScreenService listScreenModel)
         {
             _listScreenView = listScreenView;
             _listScreenModel = listScreenModel;
@@ -28,7 +29,7 @@ namespace ListViews.Tests.Infrastructure.ListScreen
             _listScreenView = listScreenView;
             return this;
         }
-        public ListScreenPresenterBuilder WithListScreenModel(IListScreenModel listScreenModel)
+        public ListScreenPresenterBuilder WithListScreenModel(IListScreenService listScreenModel)
         {
             _listScreenModel = listScreenModel;
             return this;

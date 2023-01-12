@@ -10,5 +10,6 @@ namespace ListViews.Model.Contracts
     {
         string Name { get; set; }
         List<IItem> Items { get; set; }
+        int ItemListID { get; set; }
     }
 }

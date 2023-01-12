@@ -1,6 +1,7 @@
 ﻿using ListViews.Model.Contracts;
 using ListViews.Presenter;
 using ListViews.Presenter.UI;
+using ListViews.Service.Contracts;
 using ListViews.Tests.Infrastructure;
 using ListViews.Tests.Infrastructure.ListScreen;
 using ListViews.View.Contracts;
@@ -26,7 +27,7 @@ namespace ListViews.Tests.Presenter
             return An.IListScreenView
                 .WithItemlist(itemList).Build();
         }
-        private IListScreenModel GetListScreenModel(
+        private IListScreenService GetListScreenModel(
             List<string> itemList)
         {
             return An.IListScreenModel
@@ -34,7 +35,7 @@ namespace ListViews.Tests.Presenter
         }
         private ListScreenFacade ListScreenPresenter => A.ListScreenPresenter;
         private ListScreenFacade GetListScreenPresenter(
-            IListScreenModel listScreenModel, 
+            IListScreenService listScreenModel, 
             IListScreenView listScreenView)
         {
             return A.ListScreenPresenter

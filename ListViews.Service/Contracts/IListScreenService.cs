@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace ListViews.Model.Contracts
+namespace ListViews.Service.Contracts
 {
-    public interface IListScreenModel
+    public interface IListScreenService
     {
         List<string> ItemList { get; }
         List<string> CollectionList { get; }

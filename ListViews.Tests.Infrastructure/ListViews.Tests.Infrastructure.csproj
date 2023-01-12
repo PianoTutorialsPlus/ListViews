@@ -71,6 +71,10 @@
       <Project>{A5E0BE44-BFFB-47D2-9B3F-BD22F3F6565F}</Project>
       <Name>ListViews.Presenter</Name>
     </ProjectReference>
+    <ProjectReference Include="..\ListViews.Service\ListViews.Service.csproj">
+      <Project>{DFEC2DC1-771B-4079-A03C-EE627AB7E6BF}</Project>
+      <Name>ListViews.Service</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ListViews.View\ListViews.View.csproj">
       <Project>{EE78D4E8-88E4-4A1D-8166-AD0051076EC6}</Project>
       <Name>ListViews.View</Name>

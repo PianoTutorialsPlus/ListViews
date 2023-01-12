@@ -1,5 +1,5 @@
-﻿using ListViews.Model.Contracts;
-using ListViews.Presenter;
+﻿using ListViews.Model;
+using ListViews.Model.Contracts;
 using System;
 using System.Collections.Generic;
 using System.Linq;

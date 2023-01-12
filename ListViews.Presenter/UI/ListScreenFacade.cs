@@ -1,4 +1,5 @@
 ﻿using ListViews.Model.Contracts;
+using ListViews.Service.Contracts;
 using ListViews.View.Contracts;
 using System;
 using System.Collections.Generic;
@@ -7,11 +8,11 @@ namespace ListViews.Presenter.UI
 {
     public class ListScreenFacade
     {
-        private IListScreenModel _listScreenModel;
+        private IListScreenService _listScreenModel;
         private IListScreenView _listScreenView;
 
         public ListScreenFacade(
-            IListScreenModel listScreenModel, 
+            IListScreenService listScreenModel, 
             IListScreenView listScreenView)
         {
             _listScreenModel = listScreenModel;

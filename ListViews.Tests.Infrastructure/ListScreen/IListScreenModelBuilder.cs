@@ -1,4 +1,5 @@
 ﻿using ListViews.Model.Contracts;
+using ListViews.Service.Contracts;
 using NSubstitute;
 using System;
 using System.Collections.Generic;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace ListViews.Tests.Infrastructure.ListScreen
 {
-    public class IListScreenModelBuilder : TestDataBuilder<IListScreenModel>
+    public class IListScreenModelBuilder : TestDataBuilder<IListScreenService>
     {
         private List<string> _itemList;
 
@@ -26,9 +27,9 @@ namespace ListViews.Tests.Infrastructure.ListScreen
             _itemList = itemList;
             return this;
         }
-        public override IListScreenModel Build()
+        public override IListScreenService Build()
         {
-            var listScreenModel = Substitute.For<IListScreenModel>();
+            var listScreenModel = Substitute.For<IListScreenService>();
             listScreenModel.ItemList.Returns(_itemList);
 
             return listScreenModel;

@@ -1,4 +1,4 @@
-﻿using ListViews.Presenter;
+﻿using ListViews.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;

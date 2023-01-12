@@ -1,6 +1,6 @@
+using ListViews.Model;
 using ListViews.Model.Contracts;
-using ListViews.Model.UI;
-using ListViews.Presenter;
+using ListViews.Service.UI;
 using ListViews.Tests.Infrastructure;
 using NUnit.Framework;
 using System;
@@ -8,7 +8,7 @@ using System.Collections.Generic;
 
 namespace ListViews.Tests.Model
 {
-    public class ListScreenModelTests
+    public class ListScreenServiceTests
     {
         [SetUp]
         public void Setup()
@@ -50,24 +50,24 @@ namespace ListViews.Tests.Model
                 .WithItemListCollection(itemCollection)
                 .Build();
         }
-        protected ListScreenModel ListScreenModel => A.ListScreenModel;
-        protected ListScreenModel GetListScreenModel(IItemSpawner itemSpawner)
+        protected ListScreenService ListScreenModel => A.ListScreenModel;
+        protected ListScreenService GetListScreenModel(IItemSpawner itemSpawner)
         {
             return A.ListScreenModel
                 .WithIItemSpawner(itemSpawner);
         }
-        protected ListScreenModel GetListScreenModel(ItemList itemList)
+        protected ListScreenService GetListScreenModel(ItemList itemList)
         {
             return A.ListScreenModel
                 .WithItemList(itemList);
         }
-        protected ListScreenModel GetListScreenModel(List<IItemList> itemLists)
+        protected ListScreenService GetListScreenModel(List<IItemList> itemLists)
         {
             return A.ListScreenModel
                 .WithItemListCollection(itemLists);
         }
 
-        public class TheAddItemMethod : ListScreenModelTests
+        public class TheAddItemMethod : ListScreenServiceTests
         {
             [TestCase(0)]
             [TestCase(1)]
@@ -102,7 +102,7 @@ namespace ListViews.Tests.Model
                 Assert.AreEqual(2, count);
             }
         }
-        public class TheDeleteItemMethod : ListScreenModelTests
+        public class TheDeleteItemMethod : ListScreenServiceTests
         {
             [Test]
             public void Given_Itemlist_When_ItemIndex_To_Delete_Is_Greater_Than_Itemlist_Count_Then_ArgumentOutOfRangeException_Is_Thrown()
@@ -130,7 +130,7 @@ namespace ListViews.Tests.Model
                 Assert.AreEqual(2, itemList.Items.Count);    
             }
         }
-        public class TheAddListMethod : ListScreenModelTests
+        public class TheAddListMethod : ListScreenServiceTests
         {
             [TestCase(0)]
             [TestCase(1)]
@@ -165,7 +165,7 @@ namespace ListViews.Tests.Model
                 Assert.AreEqual(2, count);
             }
         }
-        public class TheDeleteListMethod : ListScreenModelTests
+        public class TheDeleteListMethod : ListScreenServiceTests
         {
             [Test]
             public void Given_ItemCollectionlist_When_ListIndex_To_Delete_Is_Greater_Than_ItemCollectionlist_Count_Then_ArgumentOutOfRangeException_Is_Thrown()

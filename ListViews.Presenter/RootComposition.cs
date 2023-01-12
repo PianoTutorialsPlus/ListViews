@@ -1,13 +1,10 @@
 ﻿using ListViews.Model.Contracts;
-using ListViews.Model.UI;
 using ListViews.Presenter.Factories;
 using ListViews.Presenter.UI;
+using ListViews.Service.UI;
 using ListViews.View;
-using ListViews.View.Contracts;
 using System;
 using System.Collections.Generic;
-using System.IO;
-using System.Runtime.Serialization.Formatters.Binary;
 using System.Windows.Forms;
 
 namespace ListViews.Presenter
@@ -39,7 +36,7 @@ namespace ListViews.Presenter
         private void SetupSettings()
         {
             _settings = new Settings();
-            _settings.ListScreenModelHandler = new ListScreenModel.Settings();
+            _settings.ListScreenModelHandler = new ListScreenService.Settings();
             _settings.ListScreenModelHandler.ItemListCollection = _itemSpawner.SpawnList(new List<IItemList>());
 
         }
@@ -50,7 +47,7 @@ namespace ListViews.Presenter
         private void SetupListScreen()
         {
             _listScreenView = new FormListScreen();
-            ListScreenModel listScreenModel = new ListScreenModel(_settings.ListScreenModelHandler,_itemSpawner);
+            ListScreenService listScreenModel = new ListScreenService(_settings.ListScreenModelHandler,_itemSpawner);
             _listScreenPresenter = new ListScreenFacade(listScreenModel, _listScreenView);
 
             //Application.Run(listScreenView);
@@ -66,7 +63,7 @@ namespace ListViews.Presenter
         [Serializable]
         public class Settings
         {
-            public ListScreenModel.Settings ListScreenModelHandler;
+            public ListScreenService.Settings ListScreenModelHandler;
         }
     }
 }

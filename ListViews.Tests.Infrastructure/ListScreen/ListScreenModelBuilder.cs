@@ -1,15 +1,14 @@
-﻿using ListViews.Model.Contracts;
-using ListViews.Model.UI;
-using ListViews.Presenter;
-using System;
+﻿using ListViews.Model;
+using ListViews.Model.Contracts;
+using ListViews.Service.UI;
 using System.Collections.Generic;
 
 namespace ListViews.Tests.Infrastructure.ListScreen
 {
-    public class ListScreenModelBuilder : TestDataBuilder<ListScreenModel>
+    public class ListScreenModelBuilder : TestDataBuilder<ListScreenService>
     {
         private IItemSpawner _itemSpawner;
-        private ListScreenModel.Settings _settings = new ListScreenModel.Settings();
+        private ListScreenService.Settings _settings = new ListScreenService.Settings();
 
         public ListScreenModelBuilder() : this(An.IItemSpawner.Build(),new List<IItemList>() { (ItemList)An.ItemList})
         {
@@ -45,9 +44,9 @@ namespace ListViews.Tests.Infrastructure.ListScreen
             return this;
         }
 
-        public override ListScreenModel Build()
+        public override ListScreenService Build()
         {
-            return new ListScreenModel(_settings,_itemSpawner);
+            return new ListScreenService(_settings,_itemSpawner);
         }
 
     }
