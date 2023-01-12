@@ -32,7 +32,10 @@ namespace ListViews.Tests.Infrastructure.General
 
         public override ItemList Build()
         {
-            return new ItemList(_itemList);
+            return new ItemList()
+            {
+                Items = _itemList
+            };
         }
     }
 }

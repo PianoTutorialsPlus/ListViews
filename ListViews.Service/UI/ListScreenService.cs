@@ -34,7 +34,7 @@ namespace ListViews.Service.UI
             _settings = settings;
             _itemSpawner = itemSpawner;
             _itemCollectionList = _settings.ItemListCollection;
-
+            _itemList = _itemCollectionList[0];
         }
         public void AddList()
         {
