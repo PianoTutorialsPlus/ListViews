@@ -57,15 +57,15 @@
     <Compile Include="FormMainScreen.Designer.cs">
       <DependentUpon>FormMainScreen.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormListScreen.cs">
+    <Compile Include="ListScreenView.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormListScreen.Designer.cs">
-      <DependentUpon>FormListScreen.cs</DependentUpon>
+    <Compile Include="ListScreenView.Designer.cs">
+      <DependentUpon>ListScreenView.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="FormListScreen.resx">
-      <DependentUpon>FormListScreen.cs</DependentUpon>
+    <EmbeddedResource Include="ListScreenView.resx">
+      <DependentUpon>ListScreenView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormMainScreen.resx">
       <DependentUpon>FormMainScreen.cs</DependentUpon>

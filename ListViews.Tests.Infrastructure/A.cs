@@ -17,6 +17,6 @@ namespace ListViews.Tests.Infrastructure
         public static ItemListBuilder ItemList => new ItemListBuilder();
         public static IListScreenViewBuilder IListScreenView => new IListScreenViewBuilder();
         public static IListScreenModelBuilder IListScreenModel => new IListScreenModelBuilder();
-        public static IItemSpawnerBuilder IItemSpawner => new IItemSpawnerBuilder();
+        public static IItemSpawnerBuilder IItemRepository => new IItemSpawnerBuilder();
     }
 }

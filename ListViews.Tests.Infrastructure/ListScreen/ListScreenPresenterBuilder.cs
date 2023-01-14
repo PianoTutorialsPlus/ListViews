@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace ListViews.Tests.Infrastructure.ListScreen
 {
-    public class ListScreenPresenterBuilder : TestDataBuilder<ListScreenFacade>
+    public class ListScreenPresenterBuilder : TestDataBuilder<ListScreenPresenter>
     {
         private IListScreenView _listScreenView;
         private IListScreenService _listScreenModel;
@@ -34,9 +34,9 @@ namespace ListViews.Tests.Infrastructure.ListScreen
             _listScreenModel = listScreenModel;
             return this;
         }
-        public override ListScreenFacade Build()
+        public override ListScreenPresenter Build()
         {
-            return new ListScreenFacade(_listScreenModel, _listScreenView);
+            return new ListScreenPresenter(_listScreenModel, _listScreenView);
         }
     }
 }

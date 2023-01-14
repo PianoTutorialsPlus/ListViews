@@ -44,13 +44,11 @@
   <ItemGroup>
     <Compile Include="Contracts\IItem.cs" />
     <Compile Include="Contracts\IItemList.cs" />
-    <Compile Include="Contracts\IItemSpawner.cs" />
     <Compile Include="Item.cs" />
     <Compile Include="ItemList.cs" />
+    <Compile Include="ItemListDto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="UI\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

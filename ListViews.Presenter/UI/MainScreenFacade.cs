@@ -10,11 +10,11 @@ namespace ListViews.Presenter.UI
     public class MainScreenFacade
     {
         private IMainScreenView _mainScreenView;
-        private ListScreenFacade _listScreenPresenter;
+        private ListScreenPresenter _listScreenPresenter;
 
         public MainScreenFacade(
             IMainScreenView mainScreenView, 
-            ListScreenFacade listScreenPresenter)
+            ListScreenPresenter listScreenPresenter)
         {
             _mainScreenView = mainScreenView;
             _listScreenPresenter = listScreenPresenter;
@@ -32,6 +32,7 @@ namespace ListViews.Presenter.UI
         {
             _listScreenPresenter.LoadFile();
             ActivateListScreen();
+            _listScreenPresenter.RefreshCollectionList();
         }
 
         public void ActivateListScreen()

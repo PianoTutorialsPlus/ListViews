@@ -11,101 +11,31 @@ namespace ListViews.Service.UI
     public class ListScreenService : IListScreenService
     {
         private Settings _settings;
-        private IItemSpawner _itemSpawner;
-        private IItemList _itemList;
-        private List<IItemList> _itemCollectionList;
-
-        public List<string> CollectionList => _itemCollectionList != null
-            ? _itemCollectionList.Select(itemList => itemList.Name).ToList()
-            : new List<string>();
-        public List<string> ItemList => _itemList != null
-            ? _itemList.Items.Select(itemName => itemName.Name).ToList()
-            : new List<string>();
-
-        public event Action OnRefreshedCollectionList;
-        public event Action OnRefreshedItemList;
-
-
+        private IItemsRepository _itemsRepository;
+      
         public ListScreenService(
             Settings settings,
-            IItemSpawner itemSpawner
+            IItemsRepository itemsRepository
             )
         {
             _settings = settings;
-            _itemSpawner = itemSpawner;
-            _itemCollectionList = _settings.ItemListCollection;
-            _itemList = _itemCollectionList[0];
+            _itemsRepository = itemsRepository;
+            //_itemCollectionList = _settings.ItemListCollection;
+            //_itemList = _itemCollectionList[0];
         }
-        public void AddList()
-        {
-            _itemCollectionList = _itemSpawner.SpawnList(_itemCollectionList);
-            RefreshCollectionList();
-        }
-        public void DeleteList(int listIndex)
-        {
-            if (listIndex < 0 || _itemCollectionList.Count < listIndex)
-                throw new ArgumentOutOfRangeException("List Index");
+        public void AddList() => _itemsRepository.AddList();
+        public void DeleteList(int listIndex) => _itemsRepository.DeleteList(listIndex);
+        public void AddItem() => _itemsRepository.AddItem();
+        public void DeleteItem(int itemIndex) => _itemsRepository.DeleteItem(itemIndex);
+        public void SetListFromColletionId(int listIndex) => _itemsRepository.SetListFromCollectionId(listIndex);
 
-            _itemCollectionList.RemoveAt(listIndex);
-            _itemList = null;
+        public void SaveFile() => _itemsRepository.SaveFile();
 
-            RefreshItemList();
-            RefreshCollectionList();
-        }
-        private void RefreshCollectionList()
-        {
-            OnRefreshedCollectionList?.Invoke();
-        }
-        public void AddItem()
-        {
-            _itemList = _itemSpawner.SpawnItem(_itemList);
+        public void LoadFile() => _itemsRepository.LoadFile();
 
-            RefreshItemList();
-        }
-        public void DeleteItem(int itemIndex)
-        {
-            if (itemIndex < 0 || _itemList.Items.Count < itemIndex)
-                throw new ArgumentOutOfRangeException("Item Index");
+        public IEnumerable<IItemList> GetAllLists() => _itemsRepository.GetAllLists();
 
-            _itemList.Items.RemoveAt(itemIndex);
-
-            RefreshItemList();
-        }
-        private void RefreshItemList()
-        {
-            OnRefreshedItemList?.Invoke();
-        }
-        public void ShowItemList(int listIndex)
-        {
-            if (listIndex < 0 || _itemCollectionList.Count < listIndex)
-                throw new ArgumentOutOfRangeException("List Index");
-
-            _itemList = _itemCollectionList[listIndex];
-            RefreshItemList();
-        }
-
-        public void SaveFile()
-        {
-            using (Stream stream = File.Create("Test.dat"))
-            {
-                var binaryFormatter = new BinaryFormatter();
-                binaryFormatter.Serialize(stream, _settings);
-            }
-        }
-
-        public void LoadFile()
-        {
-            using (Stream stream = File.OpenRead("Test.dat"))
-            {
-                var binaryFormatter = new BinaryFormatter();
-                _settings = (Settings)binaryFormatter.Deserialize(stream);
-
-                _itemCollectionList = _settings.ItemListCollection;
-
-                RefreshItemList();
-                RefreshCollectionList();
-            }
-        }
+        public IEnumerable<IItem> GetAllItems() => _itemsRepository.GetAllItems();
 
         [Serializable]
         public class Settings

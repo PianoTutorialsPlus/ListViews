@@ -1,6 +1,6 @@
 ﻿using ListViews.Model.Contracts;
-using ListViews.Presenter.Factories;
 using ListViews.Presenter.UI;
+using ListViews.Repository.Factories;
 using ListViews.Service.UI;
 using ListViews.View;
 using System;
@@ -12,11 +12,11 @@ namespace ListViews.Presenter
     public class RootComposition
     {
         private Settings _settings;
-        private ItemSpawner _itemSpawner;
-        private ListScreenFacade _listScreenPresenter;
+        private ItemsRepository _itemSpawner;
+        private ListScreenPresenter _listScreenPresenter;
         private FormMainScreen _mainScreenView;
         private MainScreenFacade _mainScreenPresenter;
-        private FormListScreen _listScreenView;
+        private ListScreenView _listScreenView;
 
         public RootComposition()
         {
@@ -37,18 +37,21 @@ namespace ListViews.Presenter
         {
             _settings = new Settings();
             _settings.ListScreenModelHandler = new ListScreenService.Settings();
-            _settings.ListScreenModelHandler.ItemListCollection = _itemSpawner.SpawnList(new List<IItemList>());
+            var listCollection = new List<IItemList>();
+            _itemSpawner.AddList();
+
+            _settings.ListScreenModelHandler.ItemListCollection = listCollection;
 
         }
         private void SetupSpawner()
         {
-            _itemSpawner = new ItemSpawner();
+            _itemSpawner = new ItemsRepository();
         }
         private void SetupListScreen()
         {
-            _listScreenView = new FormListScreen();
+            _listScreenView = new ListScreenView();
             ListScreenService listScreenModel = new ListScreenService(_settings.ListScreenModelHandler,_itemSpawner);
-            _listScreenPresenter = new ListScreenFacade(listScreenModel, _listScreenView);
+            _listScreenPresenter = new ListScreenPresenter(listScreenModel, _listScreenView);
 
             //Application.Run(listScreenView);
         }

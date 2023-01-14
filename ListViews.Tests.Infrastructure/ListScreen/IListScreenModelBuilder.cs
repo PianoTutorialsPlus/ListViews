@@ -30,7 +30,7 @@ namespace ListViews.Tests.Infrastructure.ListScreen
         public override IListScreenService Build()
         {
             var listScreenModel = Substitute.For<IListScreenService>();
-            listScreenModel.ItemList.Returns(_itemList);
+            //listScreenModel.ItemList.Returns(_itemList);
 
             return listScreenModel;
         }

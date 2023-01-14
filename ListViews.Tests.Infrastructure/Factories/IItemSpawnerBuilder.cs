@@ -1,5 +1,6 @@
 ﻿using ListViews.Model;
 using ListViews.Model.Contracts;
+using ListViews.Service.Contracts;
 using NSubstitute;
 using System;
 using System.Collections.Generic;
@@ -9,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace ListViews.Tests.Infrastructure.Factories
 {
-    public class IItemSpawnerBuilder : TestDataBuilder<IItemSpawner>
+    public class IItemSpawnerBuilder : TestDataBuilder<IItemsRepository>
     {
         private ItemList _itemList;
         private List<IItemList> _itemCollection;
@@ -36,21 +37,21 @@ namespace ListViews.Tests.Infrastructure.Factories
             return this;
         }
 
-        public override IItemSpawner Build()
+        public override IItemsRepository Build()
         {
-            var itemSpawner = Substitute.For<IItemSpawner>();
+            var itemSpawner = Substitute.For<IItemsRepository>();
 
-            itemSpawner.When(x => x.SpawnItem(Arg.Any<IItemList>()))
+            itemSpawner.When(x => x.AddItem())
                 .Do(Callback.Always(x => _itemList.Items.Add((Item)An.Item)));
 
-            itemSpawner.SpawnItem(Arg.Any<ItemList>())
-                .Returns(_itemList);
+            //itemSpawner.AddItem(Arg.Any<ItemList>())
+            //    .Returns(_itemList);
 
-            itemSpawner.When(x => x.SpawnList(Arg.Any<List<IItemList>>()))
+            itemSpawner.When(x => x.AddList())
                 .Do(Callback.Always(x => _itemCollection.Add((ItemList)An.ItemList)));
 
-            itemSpawner.SpawnList(Arg.Any<List<IItemList>>())
-                .Returns(_itemCollection);
+            //itemSpawner.AddList(Arg.Any<List<IItemList>>())
+            //    .Returns(_itemCollection);
 
             return itemSpawner;
         }

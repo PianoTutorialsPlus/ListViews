@@ -33,8 +33,8 @@ namespace ListViews.Tests.Presenter
             return An.IListScreenModel
                 .WithItemList(itemList).Build();
         }
-        private ListScreenFacade ListScreenPresenter => A.ListScreenPresenter;
-        private ListScreenFacade GetListScreenPresenter(
+        private ListScreenPresenter ListScreenPresenter => A.ListScreenPresenter;
+        private ListScreenPresenter GetListScreenPresenter(
             IListScreenService listScreenModel, 
             IListScreenView listScreenView)
         {

@@ -1,19 +1,22 @@
 ﻿using ListViews.Model.Contracts;
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace ListViews.Service.Contracts
 {
-    public interface IListScreenService
+    public interface IItemsRepository
     {
-        void AddItem();
-        void AddList();
         void DeleteItem(int itemIndex);
         void DeleteList(int listIndex);
         IEnumerable<IItem> GetAllItems();
         IEnumerable<IItemList> GetAllLists();
-        void LoadFile();
+        void SetListFromCollectionId(int listIndex);
+        void AddItem();
+        void AddList();
         void SaveFile();
-        void SetListFromColletionId(int listIndex);
+        void LoadFile();
     }
 }
