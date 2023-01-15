@@ -148,6 +148,8 @@ namespace ListViews.Tests.Model
                 }
 
                 Assert.AreEqual(amount, itemCollectionList.Count);
+
+
             }
             //[Test]
             //public void Given_Empty_ItemCollectionlist_When_List_Is_Added_Then_OnRefreshedCollectionList_Action_Is_Triggered()
