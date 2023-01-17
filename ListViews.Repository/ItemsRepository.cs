@@ -2,16 +2,13 @@
 using ListViews.Model;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using ListViews.Service.Contracts;
 using ListViews.Database.UI;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
-using static ListViews.Service.UI.ListScreenService;
+using System.Linq;
 
-namespace ListViews.Repository.Factories
+namespace ListViews.Repository
 {
     public class ItemsRepository : IItemsRepository
     {
@@ -42,7 +39,6 @@ namespace ListViews.Repository.Factories
         }
 
         public IEnumerable<IItem> GetAllItems() => _itemList?.Items;
-
         public IEnumerable<IItemList> GetAllLists() => _itemListsDB?.ItemListCollection;
 
         public void SetListFromCollectionId(int listIndex)
@@ -53,22 +49,8 @@ namespace ListViews.Repository.Factories
             _itemList = (ItemList)_itemListsDB.ItemListCollection[listIndex];
         }
 
-        public void AddItem()
-        {
-            _itemList?.Items.Add(new Item()
-            {
-                Name = "item " + (_itemList.Items.Count + 1)
-            });
-        }
-
-        public void AddList()
-        {
-            _itemListsDB.ItemListCollection?.Add(new ItemList()
-            {
-                Name = "List" + (_itemListsDB.ItemListCollection.Count + 1),
-                Items = new List<IItem>()
-            });
-        }
+        public void AddItem(IItem item) => _itemList?.Items.Add(item);
+        public void AddList(IItemList itemList) => _itemListsDB.ItemListCollection?.Add(itemList);
 
         public void SaveFile()
         {
@@ -88,5 +70,16 @@ namespace ListViews.Repository.Factories
 
             }
         }
+
+        public ItemList NewItemList => new ItemList()
+        {
+            Name = "List" + (_itemListsDB.ItemListCollection?.Count + 1),
+            Items = new List<IItem>()
+        };
+
+        public Item NewItem => new Item()
+        {
+            Name = "item " + (_itemList?.Items.Count + 1)
+        };
     }
 }

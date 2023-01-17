@@ -8,7 +8,7 @@ namespace ListViews.Model.Contracts
 {
     public interface IItem
     {
-        string Name { get; }
+        string Name { get; set; }
         int ItemID { get; set; }
     }
 }

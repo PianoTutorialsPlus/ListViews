@@ -1,6 +1,9 @@
-﻿using ListViews.Model.Contracts;
+﻿using ListViews.Model;
+using ListViews.Model.Contracts;
 using ListViews.Presenter.UI;
-using ListViews.Repository.Factories;
+using ListViews.Repository;
+using ListViews.Service.Common_Services;
+using ListViews.Service.Contracts;
 using ListViews.Service.UI;
 using ListViews.View;
 using System;
@@ -17,6 +20,7 @@ namespace ListViews.Presenter
         private FormMainScreen _mainScreenView;
         private MainScreenFacade _mainScreenPresenter;
         private ListScreenView _listScreenView;
+        private ModelDataAnnotationCheck _modelDataAnnotationCheck;
 
         public RootComposition()
         {
@@ -36,11 +40,11 @@ namespace ListViews.Presenter
         private void SetupSettings()
         {
             _settings = new Settings();
-            _settings.ListScreenModelHandler = new ListScreenService.Settings();
-            var listCollection = new List<IItemList>();
-            _itemSpawner.AddList();
-
-            _settings.ListScreenModelHandler.ItemListCollection = listCollection;
+            //_settings.ListScreenModelHandler = new ListScreenService.Settings();
+            //var listCollection = new ItemList();
+            //_itemSpawner.AddList(listCollection);
+            _modelDataAnnotationCheck = new ModelDataAnnotationCheck();
+            //_settings.ListScreenModelHandler.ItemListCollection = listCollection;
 
         }
         private void SetupSpawner()
@@ -50,7 +54,7 @@ namespace ListViews.Presenter
         private void SetupListScreen()
         {
             _listScreenView = new ListScreenView();
-            ListScreenService listScreenModel = new ListScreenService(_settings.ListScreenModelHandler,_itemSpawner);
+            ListScreenService listScreenModel = new ListScreenService(_itemSpawner,_modelDataAnnotationCheck);
             _listScreenPresenter = new ListScreenPresenter(listScreenModel, _listScreenView);
 
             //Application.Run(listScreenView);
@@ -66,7 +70,7 @@ namespace ListViews.Presenter
         [Serializable]
         public class Settings
         {
-            public ListScreenService.Settings ListScreenModelHandler;
+            //public ListScreenService.Settings ListScreenModelHandler;
         }
     }
 }

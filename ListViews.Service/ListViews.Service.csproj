@@ -32,6 +32,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -41,8 +42,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Common Services\ModelDataAnnotationCheck.cs" />
     <Compile Include="Contracts\IItemsRepository.cs" />
     <Compile Include="Contracts\IListScreenService.cs" />
+    <Compile Include="Contracts\IModelDataAnnotationCheck.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UI\ListScreenService.cs" />
   </ItemGroup>

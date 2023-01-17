@@ -54,7 +54,9 @@ namespace ListViews.Presenter.UI
 
         private void AddItem()
         {
-            _listScreenService.AddItem();
+            var item = _listScreenService.CreateNewItem();
+
+            _listScreenService.AddItem(item);
             RefreshItemList();
         }
 
@@ -67,21 +69,22 @@ namespace ListViews.Presenter.UI
 
         private void AddList()
         {
-            _listScreenService.AddList();
+            var itemList = _listScreenService.CreateNewItemList();
+            _listScreenService.AddList(itemList);
             RefreshCollectionList();
         }
 
         public void RefreshCollectionList()
         {
-             var itemCollectionList = _listScreenService.GetAllLists();
+            var itemCollectionList = _listScreenService.GetAllLists();
             _listScreenView.CollectionList = itemCollectionList != null
                 ? itemCollectionList.Select(itemList => itemList.Name).ToList()
                 : new List<string>();
-    }
+        }
 
         public void RefreshItemList()
         {
-            var itemList = (List<IItem>)_listScreenService.GetAllItems();
+            var itemList = _listScreenService.GetAllItems();
             _listScreenView.ItemList = itemList != null
             ? itemList.Select(itemName => itemName.Name).ToList()
             : new List<string>();
